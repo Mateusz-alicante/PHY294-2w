@@ -135,13 +135,13 @@ chi_squared(all_shifts, np.array(all_fields) * slope, np.std(all_shifts), 1)
 
 
 # Calculate the e/m ratio
-D_A = ufloat(0.20, 0.03)
+D_A = ufloat(0.20, 0.03) * 10**-3
 D = 4.04 * 10**-3
 N = 1.4567
 L = 643.8 * 10**-9
 C = 3 * 10**8
 SLOPE = ufloat(slope, slope_std)
 
-e_m = SLOPE * 4 * np.pi * C / (2 * D * np.sqrt(N ** 2 - 1))
+e_m = SLOPE * 4 * np.pi * C / (2 * D * np.sqrt(N ** 2 - 1) * D_A)
 
 print(f"e/m: {e_m:.4e}")
