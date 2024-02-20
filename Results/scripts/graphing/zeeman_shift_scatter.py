@@ -3,7 +3,8 @@ import numpy as np
 import itertools
 import matplotlib.pyplot as plt
 import matplotlib
-from statistics import linear_regression
+from scipy.optimize import curve_fit
+from uncertainties import ufloat
 
 no_field = [0.23, 0.0, -0.24, -0.41, -0.6, -0.76, -0.91]
 
@@ -14,6 +15,20 @@ fields = {
     583.4: [(0.08, -0.11), (-0.19, -0.37), (-0.40, -0.54), (-0.59, -0.67), (-0.72, -0.83), (-0.86, -0.96)],
     583.1: [(0.09, -0.14), (-0.19, -0.35), (-0.40, -0.51), (-0.56, -0.68), (-0.74, -0.83), (-0.87, -0.97)]
 }
+
+
+def chi_squared(expected, obtained, std_dev, degrees_freedom):
+    chi_squared = sum(((expected - obtained) / std_dev) ** 2)
+    print(f"Chi squared: {chi_squared}")
+    reduced_chi_squared = chi_squared / (len(expected) - degrees_freedom)
+    print(f"Reduced chi squared: {reduced_chi_squared}")
+
+
+def fit_function(x, a):
+    return a * x
+
+#################### linearity of field ####################
+
 
 fig, ax = plt.subplots()
 ax.margins(0.05)  # Optional, just adds 5% padding to the autoscaling
@@ -51,12 +66,15 @@ for key, value in fields.items():
     all_fields.extend(fields)
 
 # Compute linear fit for the zeeman split values (force zero intercept):
-slope, _ = linear_regression(all_fields, all_shifts, proportional=True)
+# slope, _ = linear_regression(all_fields, all_shifts, proportional=True)
+a_fit, cov = curve_fit(fit_function, all_fields, all_shifts)
+slope = a_fit[0]
+slope_std = np.sqrt(cov[0, 0])
 x = np.linspace(min(all_fields), max(all_fields), 100)
 y = x * slope
 
 
-# add slioght jiggle to the x values
+# add slight jiggle to the x values
 all_fields_jiggle = [x + np.random.normal(0, 10) for x in all_fields]
 
 # Plot all the individual measurements
@@ -92,6 +110,8 @@ ax.errorbar(all_fields_jiggle, residuals, yerr=np.std(
 
 # residuals for the averages
 residuals = np.array(averages_shifts) - np.array(averages_fields) * slope
+
+
 ax.errorbar(averages_fields, residuals, yerr=averages_std, fmt='o',
             label='Residuals for averages for each field value', ms=8, zorder=10, elinewidth=1.5)
 
@@ -104,3 +124,24 @@ ax.set_ylabel('Residuals (mm)')
 ax.set_title('Residuals for Zeeman shift linear fit')
 
 plt.savefig('Results/img/zeeman_shift_residuals.png', dpi=300)
+
+
+# get the slope and its uncertainty
+print(slope)
+print(f"Slope: {slope:.4e} \pm {slope_std:.4e}")
+
+# get the chi squared
+chi_squared(all_shifts, np.array(all_fields) * slope, np.std(all_shifts), 1)
+
+
+# Calculate the e/m ratio
+D_A = ufloat(0.20, 0.03)
+D = 4.04 * 10**-3
+N = 1.4567
+L = 643.8 * 10**-9
+C = 3 * 10**8
+SLOPE = ufloat(slope, slope_std)
+
+e_m = SLOPE * 4 * np.pi * C / (2 * D * np.sqrt(N ** 2 - 1))
+
+print(f"e/m: {e_m:.4e}")

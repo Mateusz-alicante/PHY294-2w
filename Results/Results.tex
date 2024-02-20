@@ -241,7 +241,7 @@ magnetic field intensity to be constant.
     \caption{Combined Data for Part 1 and Zeeman Shift}
 \end{table}
 
-\subsection{Observing the linearity of the Zeeman shift with respect to the field strength}
+\subsection{Part 1: Observing the linearity of the Zeeman shift with respect to the field strength}
 
 Now, we plot the previouslt obtained values in a scatter plot and compare it to a linear fit.
 
@@ -256,3 +256,38 @@ Now, we plot the previouslt obtained values in a scatter plot and compare it to 
     \includegraphics[width=0.8\textwidth]{Results/img/zeeman_shift_residuals.png}
     \caption{Zeeman Shift vs Magnetic Field Intensity}
 \end{figure}
+
+The slope of the linear fit is obtained to be:
+$1.2660e-04 \pm 8.2711e-06 \frac{m}{T}$
+
+The Chi squared value is $34.6$, and the reduced Chi squared value is $1.19$, which indicated a good fit.
+
+\subsection{Part 2: measuring the $\frac{e}{m}$ relationship.}
+
+Looking back at equation \ref{eq:em_relationship}, we can see that the value of $\frac{e}{m}$ can be obtained from the slope of the linear fit of the Zeeman shift vs the magnetic field intensity in the previous section.
+
+Before doing this, we must obtain the value of $\Delta A$ (the separation of successive interference lines). Because this qunatity is not a property
+of the line itself, but rather of all of the collection of lines, we obtain all of the separations for the lines without amgnetic field
+and then use the average of these values as a constant in this equation.
+
+\def\lineUncertainty{0.05}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        Trial 1                     & Trial 2                     & Trial 3                     & Trial 4                     & Trial 5                     & Average         \\
+        \hline
+        $0.23 \pm \lineUncertainty$ & $0.24 \pm \lineUncertainty$ & $0.17 \pm \lineUncertainty$ & $0.19 \pm \lineUncertainty$ & $0.16 \pm \lineUncertainty$ & $0.20 \pm 0.03$ \\
+        \hline
+    \end{tabular}
+    \caption{Line separation for different line position measurments.}
+    \label{your-label}
+\end{table}
+
+
+
+We use the uncertainty propagation formula to obtain the uncertainty to obtain the uncertanties in the $\frac{e}{m}$ value
+by considering the uncertanties in the slope obtained in the previous section, and the uncertanties in the $\Delta A$ value.
+
+
+We obtain the value of $\frac{e}{m} = (5.5766 \pm 0.3643)e+07$
