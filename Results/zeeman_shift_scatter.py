@@ -3,6 +3,7 @@ import numpy as np
 import itertools
 import matplotlib.pyplot as plt
 import matplotlib
+from statistics import linear_regression
 
 no_field = [0.23, 0.0, -0.24, -0.41, -0.6, -0.76, -0.91]
 
@@ -37,8 +38,11 @@ for key, value in fields.items():
         shifts.append(shift)
         fields.append(key)
 
+    # Mean and standard deviation for the combined field
     std_dev = np.std(shifts)
     mean = np.mean(shifts)
+
+    # Arrray with all individual measurements
     averages_fields.append(key)
     averages_std.append(std_dev)
     averages_shifts.append(mean)
@@ -46,14 +50,57 @@ for key, value in fields.items():
     all_shifts.extend(shifts)
     all_fields.extend(fields)
 
+# Compute linear fit for the zeeman split values (force zero intercept):
+slope, _ = linear_regression(all_fields, all_shifts, proportional=True)
+x = np.linspace(min(all_fields), max(all_fields), 100)
+y = x * slope
 
-ax.errorbar(all_fields, all_shifts, yerr=np.std(
-    all_shifts), fmt='o', label='Single measurements', ms=7, zorder=0)
 
+# add slioght jiggle to the x values
+all_fields_jiggle = [x + np.random.normal(0, 10) for x in all_fields]
+
+# Plot all the individual measurements
+ax.errorbar(all_fields_jiggle, all_shifts, yerr=np.std(
+    all_shifts), fmt='x', label='Single measurements', ms=6, zorder=0, elinewidth=0.5)
+
+# Plot the averages for each field
 ax.errorbar(averages_fields, averages_shifts,  yerr=averages_std, fmt='o',
+            label='Averages', ms=8, zorder=10, elinewidth=1.5)
 
-            label='Averages', ms=12, zorder=10)
+# Plot the linear fit
+ax.plot(x, y, label='Linear fit', zorder=20)
 
 ax.legend()
 
-plt.show()
+ax.set_xlabel('Magnetic field (mT)')
+ax.set_ylabel('Zeeman shift (mm)')
+
+ax.set_title('Zeeman shift for different measured fields')
+
+plt.savefig('Results/img/zeeman_shift_scatter.png', dpi=300)
+
+
+# Now plot the residuals
+
+fig, ax = plt.subplots()
+ax.margins(0.05)
+
+# residuals for all measurements:
+residuals = np.array(all_shifts) - np.array(all_fields) * slope
+ax.errorbar(all_fields_jiggle, residuals, yerr=np.std(
+    all_shifts), fmt='x', label='Residuals for individual measurments', ms=6, zorder=0, elinewidth=0.5)
+
+# residuals for the averages
+residuals = np.array(averages_shifts) - np.array(averages_fields) * slope
+ax.errorbar(averages_fields, residuals, yerr=averages_std, fmt='o',
+            label='Residuals for averages for each field value', ms=8, zorder=10, elinewidth=1.5)
+
+# add line at y = 0
+ax.axhline(0, color='black', lw=0.5)
+
+ax.legend()
+ax.set_xlabel('Magnetic field (mT)')
+ax.set_ylabel('Residuals (mm)')
+ax.set_title('Residuals for Zeeman shift linear fit')
+
+plt.savefig('Results/img/zeeman_shift_residuals.png', dpi=300)
