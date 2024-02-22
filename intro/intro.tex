@@ -42,3 +42,44 @@ $L_z = m_l \hbar$, where $m_l$ is the magnetic quantum number, and $\hbar$ is th
 
 According to this, and keeping in mind that $m_l$ can take intager values from $-l$ to $l$, we can see that the energy levels of the electron
 are spaced by $\Delta E = \gamma \hbar B$. This is the energy difference between the Zeeman levels.
+
+
+% Some more theoretical explaination will be needed here
+
+The Zeeman effect can be used to estimate the value of $\frac{e}{m}$.
+
+The change in wavelength of the spectral lines is given by:
+
+\begin{equation}
+    \Delta \lambda = \frac{\Delta S}{\Delta A} \frac{\lambda^2}{2d} \frac{2}{\sqrt[2]{\eta^2 - 1}}
+\end{equation}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{intro/lambda_calc_diagram.jpeg}
+    \caption{Meaning of variables in change in wavelength of spectral lines equation.}
+    \label{fig:variables_lambda}
+\end{figure}
+
+
+Where $\Delta S$ is the separation of the zeeman split, $\Delta A$ is the separation of successive interference lines, $\lambda$ is the wavelength of the light, $d$ is the distance between the grating and the screen, and $\nu$ is the refractive index of the medium.
+Figure \ref{fig:variables_lambda} helps build a better understanding of the variables involved in the equation.
+
+
+We are given that the refractive index of the Lummer plate is $\nu = 1.4567$, the wavlength of the red line in cadmimum is $\lambda = 643.8 nm$, and the thickness of the Lummer plate is $d = 4.04 mm$.
+
+Further, it can also be obtained that the change in frequency when a field is applied is given by:
+
+\begin{equation}
+    \Delta \nu = \frac{e B}{4\pi m}
+\end{equation}
+
+Where $e$ is the charge of the electron, $B$ is the magnetic field, and $m$ is the mass of the electron.
+
+We can then use the change in frequency to estimate the value of $\frac{e}{m}$ by using $\Delta v = \frac{c}{\lambda^2} \Delta \lambda$:
+
+\begin{equation} \label{eq:em_relationship}
+    \frac{e}{m} =
+    \frac{4 \pi c}{B} \frac{1}{2d\sqrt[2]{\eta^2 - 1}} \frac{\Delta S}{\Delta A}
+\end{equation}

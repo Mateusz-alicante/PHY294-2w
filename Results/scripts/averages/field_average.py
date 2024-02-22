@@ -1,5 +1,6 @@
 from uncertainties import ufloat
 from uncertainties.umath import *
+import numpy as np
 
 
 field_values = [
@@ -14,6 +15,8 @@ field_values = [
 
 for i, trial in enumerate(field_values):
     field_sum = 0
+    std_dev = np.std(trial)
     for value in trial:
         field_sum += ufloat(value, 0.5)
-    print("Trial", i + 1, "average:", field_sum / len(trial))
+    print("Trial", i + 1, "average:", field_sum.nominal_value /
+          len(trial), "\pm", std_dev)
