@@ -6,16 +6,23 @@
 
 \begin{figure}
     \centering
+    \includegraphics[width=0.8\textwidth]{Results/Figures/Magnetic_Field_vs_Current_jitter.png}
+    \caption{Magnetic Field Strength vs Current Jitter Plot}
+    \label{fig:magnetic_field_vs_current_jitter}
+\end{figure}
+\begin{figure}
+    \centering
     \includegraphics[width=0.8\textwidth]{Results/Figures/Magnetic_Field_vs_Current.png}
-    \caption{Magnetic Field Strength vs Current}
+    \caption{Magnetic Field Strength vs Current Regression Plots for Linear and Exponential fits}
     \label{fig:magnetic_field_vs_current}
 \end{figure}
-
-Figure \ref{fig:magnetic_field_vs_current} plots the measured magnetic field strength as a function of the current supplied to the electromagnet. The data is fitted to a linear model, and the line equation is given as:
-\begin{gather}
-    B = (1 \pm 51) + (39.6 \pm 4.4)I (mT) \quad \chi^2 / \nu = 40.0 / 3 = 13.3
-\end{gather}
-The fit has a reduced chi-squared value of 13.3, which is quite high and the residuals show a clear downards-curving pattern, showing that a linear fit is not.
+Figure \ref{fig:magnetic_field_vs_current_jitter} shows the magnetic field strength as a function of the current supplied to the electromagnet, showing the averages and standard deviations at each measured current value. Then, using these averages, figure \ref{fig:magnetic_field_vs_current} applies a linear and exponential fit to the data. These fits are given by:
+\begin{gather*}
+    B = (1 \pm 51) + (39.6 \pm 4.4)I~[mT] \quad \chi^2 / \nu = 40.0 / 3 = 13.3 \\
+    B = (-1040 \pm 150) exp (-0.089 \pm 0.051 * I) + (860 \pm 260)~[mT] \\
+    \chi^2 / \nu = 17.7 / 2 = 8.85
+\end{gather*}
+The linear fit has a reduced chi-squared value of 13.3, which is quite high and the residuals show a clear downwards-curving pattern, showing that a linear fit is not. The exponential fit has a lower reduced chi-squared value of 8.85 and the residuals show a more random pattern, indicating that the exponential fit is a better fit to the data.
 
 \subsubsection{Trial 1: 4A current}
 
