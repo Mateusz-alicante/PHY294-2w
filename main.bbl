@@ -40,6 +40,39 @@
       \verb https://spark.iop.org/measuring-em
       \endverb
     \endentry
+    \entry{o.lebigotUncertaintiesPythonPackage}{online}{}
+      \name{author}{1}{}{%
+        {{hash=0f370bb586d4d38ccfce0b7ac57d39e3}{%
+           family={O.\bibnamedelimi LEBIGOT},
+           familyi={O\bibinitperiod\bibinitdelim L\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{0f370bb586d4d38ccfce0b7ac57d39e3}
+      \strng{fullhash}{0f370bb586d4d38ccfce0b7ac57d39e3}
+      \strng{bibnamehash}{0f370bb586d4d38ccfce0b7ac57d39e3}
+      \strng{authorbibnamehash}{0f370bb586d4d38ccfce0b7ac57d39e3}
+      \strng{authornamehash}{0f370bb586d4d38ccfce0b7ac57d39e3}
+      \strng{authorfullhash}{0f370bb586d4d38ccfce0b7ac57d39e3}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Uncertainties {{Python}} Package 3.0.1}
+      \field{urlday}{28}
+      \field{urlmonth}{2}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/mateuszkazimierczak/Zotero/storage/GQ3AG835/uncertainties.html
+      \endverb
+      \verb{urlraw}
+      \verb https://pythonhosted.org/uncertainties/
+      \endverb
+      \verb{url}
+      \verb https://pythonhosted.org/uncertainties/
+      \endverb
+    \endentry
     \entry{ZeemanEffectLab}{misc}{}
       \list{organization}{1}{%
         {University of Toronto, Central Scientific Company}%
