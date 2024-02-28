@@ -17,10 +17,14 @@ fields = {
 }
 
 
-def chi_squared(expected, obtained, std_dev, degrees_freedom):
+def chi_squared(expected, obtained, std_dev, degrees_freedom, n_measurments=0):
+
+    if not n_measurments:
+        n_measurments = len(expected)
+
     chi_squared = sum(((expected - obtained) / std_dev) ** 2)
     print(f"Chi squared: {chi_squared}")
-    reduced_chi_squared = chi_squared / (len(expected) - degrees_freedom)
+    reduced_chi_squared = chi_squared / (n_measurments - degrees_freedom)
     print(f"Reduced chi squared: {reduced_chi_squared}")
 
 
@@ -134,7 +138,8 @@ print(f"Slope: {slope:.4e} \pm {slope_std:.4e} (m/t)")
 print(f"Intercept: {intercept:.4e} \pm {np.sqrt(cov[1, 1]):.4e} (mm)")
 
 # get the chi squared
-chi_squared(all_shifts, np.array(all_fields) * slope, np.std(all_shifts), 2)
+chi_squared(all_shifts, np.array(all_fields) * slope,
+            np.std(all_shifts), 2, len(averages_shifts))
 
 
 # Calculate the e/m ratio
