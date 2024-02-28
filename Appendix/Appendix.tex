@@ -1,6 +1,9 @@
 % Make appendix without number:
-\section*{Appendix}
+\section*{Appendices}
+
+\subsection{Appendix 1: Magnetic Field Intensity Measurements}
 \label{sec:appendix}
+
 This appendix contains the tabulated raw data obtained from the experiment:
 \begin{table}
     \begin{adjustwidth}{-130pt}{-130pt}
@@ -239,3 +242,26 @@ This appendix contains the tabulated raw data obtained from the experiment:
     \caption{Zeeman shift measurments for trial 5: 16A current}
 
 \end{table}
+
+
+
+\subsection{Part 2: Error and uncertainty propagation}
+\label{sec:appendix_uncertainty}
+
+This appendix contains the calculations for the uncertainty propagation in the experiment.
+
+\subsubsection{Part 1: Magnetic Field Intensity Measurements}
+
+The uncertainty for the individual current measurments was the precision of the instrument used:
+
+\begin{equation}
+    \Delta I = 0.5 A
+\end{equation}
+
+\begin{equation}
+    \Delta E = 0.5 mT
+\end{equation}
+
+These uncertianty valuers are relfected as errorbars in the plots in the Results section.
+
+For the averages for each trial, the uncertainty is the standard deviation of the measurements.
