@@ -130,8 +130,8 @@ plt.savefig('Results/img/zeeman_shift_residuals.png', dpi=300)
 
 # get the slope and its uncertainty
 print(slope)
-print(f"Slope: {slope:.4e} \pm {slope_std:.4e}")
-print(f"Intercept: {intercept:.4e} \pm {np.sqrt(cov[1, 1]):.4e}")
+print(f"Slope: {slope:.4e} \pm {slope_std:.4e} (m/t)")
+print(f"Intercept: {intercept:.4e} \pm {np.sqrt(cov[1, 1]):.4e} (mm)")
 
 # get the chi squared
 chi_squared(all_shifts, np.array(all_fields) * slope, np.std(all_shifts), 2)

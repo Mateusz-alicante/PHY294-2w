@@ -19,6 +19,27 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{MeasuringIOPSpark}{online}{}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Demonstration: this experiment shows that a cathode ray is made up of particles with a constant ratio of charge to mass (e/m). A magnetic field bends the cathode rays into a closed circle.}
+      \field{langid}{english}
+      \field{title}{Measuring e/m | {{IOPSpark}}}
+      \field{urlday}{28}
+      \field{urlmonth}{2}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/mateuszkazimierczak/Zotero/storage/M6RWLRC2/measuring-em.html
+      \endverb
+      \verb{urlraw}
+      \verb https://spark.iop.org/measuring-em
+      \endverb
+      \verb{url}
+      \verb https://spark.iop.org/measuring-em
+      \endverb
+    \endentry
     \entry{ZeemanEffectLab}{misc}{}
       \list{organization}{1}{%
         {University of Toronto, Central Scientific Company}%
