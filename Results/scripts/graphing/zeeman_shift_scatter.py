@@ -24,8 +24,8 @@ def chi_squared(expected, obtained, std_dev, degrees_freedom):
     print(f"Reduced chi squared: {reduced_chi_squared}")
 
 
-def fit_function(x, a):
-    return a * x
+def fit_function(x, a, b):
+    return a * x + b
 
 #################### linearity of field ####################
 
@@ -69,9 +69,10 @@ for key, value in fields.items():
 # slope, _ = linear_regression(all_fields, all_shifts, proportional=True)
 a_fit, cov = curve_fit(fit_function, all_fields, all_shifts)
 slope = a_fit[0]
+intercept = a_fit[1]
 slope_std = np.sqrt(cov[0, 0])
 x = np.linspace(min(all_fields), max(all_fields), 100)
-y = x * slope
+y = x * slope + intercept
 
 
 # add slight jiggle to the x values
@@ -104,12 +105,13 @@ fig, ax = plt.subplots()
 ax.margins(0.05)
 
 # residuals for all measurements:
-residuals = np.array(all_shifts) - np.array(all_fields) * slope
+residuals = np.array(all_shifts) - (np.array(all_fields) * slope + intercept)
 ax.errorbar(all_fields_jiggle, residuals, yerr=np.std(
     all_shifts), fmt='x', label='Residuals for individual measurments', ms=6, zorder=0, elinewidth=0.5)
 
 # residuals for the averages
-residuals = np.array(averages_shifts) - np.array(averages_fields) * slope
+residuals = np.array(averages_shifts) - \
+    (np.array(averages_fields) * slope + intercept)
 
 
 ax.errorbar(averages_fields, residuals, yerr=averages_std, fmt='o',
@@ -129,9 +131,10 @@ plt.savefig('Results/img/zeeman_shift_residuals.png', dpi=300)
 # get the slope and its uncertainty
 print(slope)
 print(f"Slope: {slope:.4e} \pm {slope_std:.4e}")
+print(f"Intercept: {intercept:.4e} \pm {np.sqrt(cov[1, 1]):.4e}")
 
 # get the chi squared
-chi_squared(all_shifts, np.array(all_fields) * slope, np.std(all_shifts), 1)
+chi_squared(all_shifts, np.array(all_fields) * slope, np.std(all_shifts), 2)
 
 
 # Calculate the e/m ratio
