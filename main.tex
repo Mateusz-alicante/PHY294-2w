@@ -4,6 +4,11 @@
 \usepackage[normalem]{ulem}
 \usepackage{changepage}
 \usepackage{amsmath}
+\usepackage[
+backend=biber
+]{biblatex}
+
+\addbibresource{bib.bib} %Imports bibliography file
 
 \useunder{\uline}{\ul}{}
 
@@ -20,5 +25,7 @@
 \input{Results/Results.tex}
 \input{Conclusion/Conclusion.tex}
 \input{Appendix/Appendix.tex}
+
+\printbibliography
 
 \end{document}
