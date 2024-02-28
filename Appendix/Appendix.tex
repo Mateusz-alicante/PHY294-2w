@@ -239,7 +239,7 @@ This appendix contains the tabulated raw data obtained from the experiment:
         \end{tabular}
     \end{adjustwidth}
 
-    \caption{Zeeman shift measurments for trial 5: 16A current}
+    \caption{Zeeman shift measurements for trial 5: 16A current}
 
 \end{table}
 
@@ -276,6 +276,23 @@ The uncertainty for the individual line position measurements was the precision 
 
 The uncertainty for the field is the same as in the previous section.
 
+Similarly to part 1, we use the standard deviation of the measurements to obtain the uncertainty for the averages.
 
+\subsubsection{Part 3: Measuring the $\frac{e}{m}$ relationship}
+
+
+For this part, the uncertainties in the $\Delta A$ value are obtained by taking the standard deviation of all of the measured line separations.
+
+We use the uncertainty propagation formula to obtain the uncertainty to obtain the uncertainties in the $\frac{e}{m}$ value by considering the uncertainties in the slope obtained in the previous section.
+This relationship is shown on Figure \ref{fig:error_propagation}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Appendix/Error_propagation.png}
+    \caption{Error propagation formula used for the $\frac{e}{m}$ relationship.}
+    \label{fig:error_propagation}
+\end{figure}
+
+We have also made use of the Python uncertainties package \cite{o.lebigotUncertaintiesPythonPackage} to ease long calculations and to obtain the final uncertainty in the $\frac{e}{m}$ value.
 
 For the averages for each trial, the uncertainty is the standard deviation of the measurements.
