@@ -5,3 +5,7 @@ main.log
 main.synctex.gz
 indent.log
 main.pdf
+
+main.bbl
+main.bcf
+main.blg
