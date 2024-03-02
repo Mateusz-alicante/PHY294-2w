@@ -20,13 +20,13 @@ Figure \ref{fig:magnetic_field_vs_current_jitter} shows the magnetic field stren
 \begin{gather*}
     \text{\textbf{Linear Fit:}} \\
     B = (1 \pm 51) + (39.6 \pm 4.4)I~[mT] \quad \chi^2 / \nu = 40.0 / 3 = 13.3 \\
-    \text{\textbf{Quadratic Fit:}} \\
+    \text{\textbf{Exponential Fit:}} \\
     B = (-1040 \pm 150) exp (-0.089 \pm 0.051 * I) + (860 \pm 260)~[mT] \\
     \chi^2 / \nu = 17.7 / 2 = 8.85
 \end{gather*}
 
 
-The linear fit has a reduced chi-squared value of 13.3, which is quite high and the residuals show a clear downwards-curving pattern, showing that a linear fit is not \textcolor{red}{... (something missing here)....} The exponential fit has a lower reduced chi-squared value of 8.85 and the residuals show a more random pattern, indicating that the exponential fit is a better fit to the data.
+The linear fit has a reduced chi-squared value of 13.3, which is quite high, and the residuals show a clear downwards-curving pattern. However, the exponential fit has a lower reduced chi-squared value of 8.85 and the residuals show a more random pattern, indicating that the exponential fit is a better fit to the data than the linear fit. This may be due to there being a maximum field strength from the electromagnet, where adding more current doesn't just result in linearly increasing magnetic field strength.
 
 \subsection{Part 2: Observing the linearity of the Zeeman shift with respect to the field strength}
 
