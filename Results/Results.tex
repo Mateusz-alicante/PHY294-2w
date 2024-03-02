@@ -31,7 +31,7 @@ The linear fit has a reduced chi-squared value of 13.3, which is quite high, and
 \subsection{Part 2: Observing the linearity of the Zeeman shift with respect to the field strength}
 
 Now, we plot the previously obtained values (Appendix \ref{sec:appendix} contains all of the raw measurements taken, as well as the Zeeman shift calculation for each trial organized in tables by magnetic field strength.)
-in a scatter plot and compare it to a linear fit of the form $y = mx + b$.
+in a scatter plot and compare it to a linear fit of the form $\Delta S = mB + b$.
 
 \begin{figure}
     \centering
@@ -49,13 +49,12 @@ in a scatter plot and compare it to a linear fit of the form $y = mx + b$.
 
 The parameters for the standard fit are:
 \begin{gather*}
-    \Delta x = (58.870 \pm 17.648)T + (33.781 \pm 8.1574) \mu m \quad \chi^2 / \nu = 114.6 / 29 = 38.2
+    \Delta S = (58.870 \pm 17.648)B + (33.781 \pm 8.1574) \mu m \quad \chi^2 / \nu = 114.6 / 29 = 38.2
 \end{gather*}
 
-Where T is in tesla. The linear fit can be seen in Figure \ref{fig:zeeman_shift_scatter}, and the residuals can be seen in Figure \ref{fig:zeeman_shift_residuals}. The residuals do indicate a random
+Where B is in tesla. The linear fit can be seen in Figure \ref{fig:zeeman_shift_scatter}, and the residuals can be seen in Figure \ref{fig:zeeman_shift_residuals}. The residuals do indicate a random
 pattern above and below the line (2 of the average points are above, and the other two are below). This indicates that the linear fit is a good fit to the data.
-
-The reduced Chi squared value is $38.2$, which does not indicate a good fit. This can be seen since the uncertainties do not match well with the best fit line, being much greater than what the fit predicts.
+The reduced Chi squared value is $38.2$, which does not indicate a good fit, since the observed uncertainties are quite large making the fit less accurate given the wide uncertainty in the residuals.
 \subsection{Part 3: measuring the $\frac{e}{m}$ relationship.}
 
 Looking back at equation \ref{eq:em_relationship}, we can see that the value of $\frac{e}{m}$ can be obtained from the slope of the linear fit of the Zeeman shift vs the magnetic field intensity in the previous section.
